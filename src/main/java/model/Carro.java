@@ -7,7 +7,7 @@ public class Carro {
     private String modelo;
     private String cor;
     private int potencia;
-    private Boolean isLigado = false;
+    Boolean isLigado = false;
     private int velocidadeAtual = 0;
     private int velocidadeMaxima = 0;
 

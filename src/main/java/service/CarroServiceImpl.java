@@ -16,17 +16,42 @@ public class CarroServiceImpl implements CarroService {
 
     @Override
     public void acelerar(Carro carro) {
+            if (carro.getLigado()) {
+                carro.setVelocidadeAtual(carro.getVelocidadeAtual() + carro.getPotencia());
+            }
+        }
+
+
+    @Override
+    public void acelerar(Carro carro, int velocidadeAMais) {
         if (carro.getLigado()) {
-            carro.setVelocidadeAtual(carro.getVelocidadeAtual() + carro.getPotencia());
+            carro.setVelocidadeAtual(carro.getVelocidadeAtual() + velocidadeAMais);
         }
     }
 
     @Override
     public void frear(Carro carro) {
         if (carro.getLigado()) {
-            carro.setVelocidadeAtual(carro.getVelocidadeAtual() - carro.getPotencia());
+            if (carro.getVelocidadeAtual() - carro.getPotencia() <= 0) {
+                carro.setVelocidadeAtual(0);
+            } else {
+                carro.setVelocidadeAtual(carro.getVelocidadeAtual() - carro.getPotencia());
+            }
         }
     }
+
+
+    @Override
+    public void frear(Carro carro, int velocidadeAMenos) {
+        if (carro.getLigado()) {
+            if (carro.getVelocidadeAtual() - velocidadeAMenos <= 0) {
+                carro.setVelocidadeAtual(0);
+            } else {
+                carro.setVelocidadeAtual(carro.getVelocidadeAtual() - velocidadeAMenos);
+            }
+        }
+    }
+
 
     @Override
     public void mostrarEstadoAtual(Carro carro) {
